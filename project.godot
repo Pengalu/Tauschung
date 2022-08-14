@@ -21,6 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot Fake 3d Engine"
+run/main_scene="res://TestScn.tscn"
 config/icon="res://icon.png"
 
 [editor]
