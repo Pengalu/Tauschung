@@ -8,5 +8,5 @@ z_index = 2016
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.270588, 0.270588, 0.270588, 1 )
+modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 2 )

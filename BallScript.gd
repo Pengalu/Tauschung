@@ -9,7 +9,7 @@ var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize()
-	z = rng.randf_range(0,200)
+	z = rng.randf_range(0,75)
 	pass # Replace with function body.
 
 	
@@ -22,9 +22,10 @@ func _draw():
 	var shadowPosition = Vector2(drawPositionTable[0].x,drawPositionTable[0].y+z)
 	
 	var shadowInstance = shadow.instance()
-	shadowInstance.position = shadowPosition
+	
 	#add_child(get_node("/root/Node2D/"))
-	add_child(shadowInstance)
+	#add_child(shadowInstance)
+	get_node("/root/Node2D/").add_child(shadowInstance)
 	#get_node("..").add_child(shadowInstance)
 	
 	#shadowInstance.draw_func(shadowPosition,radius,Color.dimgray)
@@ -35,7 +36,10 @@ func _draw():
 	var realRadius = radius/32
 	$Sprite.scale=Vector2(realRadius,realRadius)
 	$Sprite.modulate = Color(rng.randf(),rng.randf(),rng.randf())
-	shadowInstance.get_child(0).scale = Vector2(realRadius,realRadius)
+	shadowInstance.scale = Vector2(realRadius,realRadius)
+	z_index = position.y
+	shadowInstance.z_index = -4095#max is -4096
+	shadowInstance.position = shadowPosition
 	#draw_circle(drawPosition,radius,Color(rng.randf(),rng.randf(),rng.randf()))
 	
 	
