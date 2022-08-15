@@ -13,7 +13,7 @@ extends Node
 
 
 func wp_to_sp(worldPos,depth):
-	print(depth)
+	#print(depth)
 	var camera = get_node("/root/Node2D/Camera2D")
 	var res_screen_x = worldPos.x
 	var res_screen_y = worldPos.y
