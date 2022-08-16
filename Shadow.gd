@@ -1,5 +1,5 @@
 extends Node2D
-
+#this script is actually useles it does nothing 
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -14,7 +14,7 @@ func _ready():
 	
 	pass # Replace with function body.
 func _draw():
-	print("ahg")
+	pass
 	#draw_circle(pos,radius,color)
 
 	

@@ -5,7 +5,11 @@ extends Node2D
 # var b = "text"
 var z = 0
 var shadow = preload("res://Shadow.tscn")
+var shadowInstance=null
 var rng = RandomNumberGenerator.new()
+var radius=0
+var drawPosition = null
+var drawPositionTable = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize()
@@ -14,18 +18,22 @@ func _ready():
 
 	
 func _draw():
-	var radius = rng.randf_range(10.0, 50.0)
-	var drawPositionTable = WorldToScreen.wp_to_sp(position,z)
-	var drawPosition = drawPositionTable[0]
+	if radius == 0:
+		radius = rng.randf_range(10.0, 50.0)
+		$Sprite.modulate = Color(rng.randf(),rng.randf(),rng.randf())
+	print(position)
+	drawPositionTable = WorldToScreen.wp_to_sp(position,z)
+	drawPosition = drawPositionTable[0]
 	
 	#var shadowPositionTable = WorldToScreen.wp_to_sp(position,0)
-	var shadowPosition = Vector2(drawPositionTable[0].x,drawPositionTable[0].y+z)
-	
-	var shadowInstance = shadow.instance()
+	var shadowPositionTable = WorldToScreen.wp_to_sp(position,0)
+	if shadowInstance == null:
+		shadowInstance = shadow.instance()
+		get_node("/root/Node2D/").add_child(shadowInstance)
 	
 	#add_child(get_node("/root/Node2D/"))
 	#add_child(shadowInstance)
-	get_node("/root/Node2D/").add_child(shadowInstance)
+	
 	#get_node("..").add_child(shadowInstance)
 	
 	#shadowInstance.draw_func(shadowPosition,radius,Color.dimgray)
@@ -33,15 +41,18 @@ func _draw():
 #	shadowInstance.radius = radius
 #	shadowInstance.color = Color.dimgray
 	position = drawPosition
+	#print(position)
 	var realRadius = radius/32
 	$Sprite.scale=Vector2(realRadius,realRadius)
-	$Sprite.modulate = Color(rng.randf(),rng.randf(),rng.randf())
+	
 	shadowInstance.scale = Vector2(realRadius,realRadius)
 	z_index = position.y
 	shadowInstance.z_index = -4095#max is -4096
-	shadowInstance.position = shadowPosition
-	#draw_circle(drawPosition,radius,Color(rng.randf(),rng.randf(),rng.randf()))
+	shadowInstance.position = Vector2(shadowPositionTable[0].x,shadowPositionTable[0].y+z)
 	
+	#draw_circle(drawPosition,radius,Color(rng.randf(),rng.randf(),rng.randf()))
+func _process(delta):
+	update()
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -7,13 +7,21 @@ extends Node2D
 
 var ball = preload("res://Ball.tscn")
 var rng = RandomNumberGenerator.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for n in 50:
+	var t = Timer.new()
+	t.set_wait_time(3)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	yield(t, "timeout")
+	t.queue_free()
+	for n in 15:
 		rng.randomize()
 		var instance = ball.instance()
-		
-		instance.position=Vector2(rng.randf_range(0,1200),rng.randf_range(0,650))
+			
+		instance.position=Vector2(rng.randf_range(0,1200),rng.randf_range(0,1200))
 		add_child(instance)
 	pass # Replace with function body.
 
