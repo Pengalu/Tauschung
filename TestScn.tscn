@@ -6,6 +6,5 @@ __meta__ = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 512, 300 )
 rotating = true
 current = true

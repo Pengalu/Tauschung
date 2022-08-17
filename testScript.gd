@@ -17,11 +17,11 @@ func _ready():
 	t.start()
 	yield(t, "timeout")
 	t.queue_free()
-	for n in 15:
+	for n in 50:
 		rng.randomize()
 		var instance = ball.instance()
 			
-		instance.position=Vector2(rng.randf_range(0,1200),rng.randf_range(0,1200))
+		instance.position=Vector2(rng.randf_range(-1200,1200),rng.randf_range(-600,600))
 		add_child(instance)
 	pass # Replace with function body.
 

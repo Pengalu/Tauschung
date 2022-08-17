@@ -10,6 +10,7 @@ var rng = RandomNumberGenerator.new()
 var radius=0
 var drawPosition = null
 var drawPositionTable = null
+var originalPosition = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize()
@@ -21,12 +22,13 @@ func _draw():
 	if radius == 0:
 		radius = rng.randf_range(10.0, 50.0)
 		$Sprite.modulate = Color(rng.randf(),rng.randf(),rng.randf())
+		originalPosition = position
 	print(position)
-	drawPositionTable = WorldToScreen.wp_to_sp(position,z)
+	drawPositionTable = WorldToScreen.wp_to_sp(originalPosition,z)
 	drawPosition = drawPositionTable[0]
 	
 	#var shadowPositionTable = WorldToScreen.wp_to_sp(position,0)
-	var shadowPositionTable = WorldToScreen.wp_to_sp(position,0)
+	var shadowPositionTable = WorldToScreen.wp_to_sp(originalPosition,0)
 	if shadowInstance == null:
 		shadowInstance = shadow.instance()
 		get_node("/root/Node2D/").add_child(shadowInstance)
