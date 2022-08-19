@@ -35,11 +35,10 @@ func lendir_port(start,dir,mag):
 	
 func _process(delta):
 	if Input.is_action_pressed("rotateLeft"):
-		angle+=1
-	elif Input.is_action_pressed("rotateRight"):
 		angle-=1
-	if angle ==360 or angle == -360:
-		angle = 0
+	elif Input.is_action_pressed("rotateRight"):
+		angle+=1
+
 	m00 = lendir_port(position,angle,1).x
 	m10 = lendir_port(position,angle,-1).y
 	m01 = lendir_port(position,angle,1).y
@@ -58,7 +57,9 @@ func _process(delta):
 		rawAxisY -=1
 
 	var forVector = lendir_port(position,-angle+90,1) #Vector2(rawAxisX,rawAxisY)
+	forVector.y = -forVector.y
 	var sideVector =  lendir_port(position,-angle,1)
+	sideVector.y = -sideVector.y
 	uiLabel.set_text(str(forVector) + " " +str(sideVector))
 	camera.position.x += (rawAxisY * forVector.x + rawAxisX * sideVector.x);
 	camera.position.y += (rawAxisY * forVector.y + rawAxisX * sideVector.y);
