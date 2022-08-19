@@ -42,7 +42,7 @@ func wp_to_sp(worldPos,depth):
 	
 	#res_screen_y = 300*
 	res_screen_y = xp_net * camera.m01 + (res_screen_y * camera.m11);
-	print(camera.m01)
+	#print(camera.m01)
 	
 	
 	

@@ -17,7 +17,7 @@ func _ready():
 	t.start()
 	yield(t, "timeout")
 	t.queue_free()
-	for n in 50:
+	for n in 100:
 		rng.randomize()
 		var instance = ball.instance()
 			

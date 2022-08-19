@@ -14,16 +14,16 @@ var originalPosition = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize()
-	z = rng.randf_range(0,75)
+	z = rng.randf_range(2,120)
 	pass # Replace with function body.
 
 	
 func _draw():
 	if radius == 0:
-		radius = rng.randf_range(10.0, 50.0)
+		radius = rng.randf_range(25.0, 100.0)
 		$Sprite.modulate = Color(rng.randf(),rng.randf(),rng.randf())
 		originalPosition = position
-	print(position)
+	#print(position)
 	drawPositionTable = WorldToScreen.wp_to_sp(originalPosition,z)
 	drawPosition = drawPositionTable[0]
 	

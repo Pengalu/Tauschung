@@ -8,3 +8,13 @@ __meta__ = {
 [node name="Camera2D" type="Camera2D" parent="."]
 rotating = true
 current = true
+
+[node name="Control" type="Control" parent="Camera2D"]
+margin_left = -110.0
+margin_top = -67.0
+margin_right = -10.0
+margin_bottom = -7.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/Control"]
+margin_right = 100.0
+margin_bottom = 60.0
