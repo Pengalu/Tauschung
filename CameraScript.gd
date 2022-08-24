@@ -60,7 +60,7 @@ func _process(delta):
 	forVector.y = -forVector.y
 	var sideVector =  lendir_port(position,-angle,1)
 	sideVector.y = -sideVector.y
-	uiLabel.set_text(str(forVector) + " " +str(sideVector))
+	uiLabel.set_text(str(forVector) + " " +str(sideVector) +" "+str(angle))
 	camera.position.x += (rawAxisY * forVector.x + rawAxisX * sideVector.x);
 	camera.position.y += (rawAxisY * forVector.y + rawAxisX * sideVector.y);
 	
