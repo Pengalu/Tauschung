@@ -52,17 +52,17 @@ func _process(delta):
 	if Input.is_action_pressed("move_right"):
 		rawAxisX+=1
 	if Input.is_action_pressed("move_down"):
-		rawAxisY +=1
-	if Input.is_action_pressed("move_up"):
 		rawAxisY -=1
+	if Input.is_action_pressed("move_up"):
+		rawAxisY +=1
 
 	var forVector = lendir_port(position,-angle+90,1) #Vector2(rawAxisX,rawAxisY)
 	forVector.y = -forVector.y
 	var sideVector =  lendir_port(position,-angle,1)
 	sideVector.y = -sideVector.y
 	uiLabel.set_text(str(forVector) + " " +str(sideVector) +" "+str(angle))
-	camera.position.x += (rawAxisY * forVector.x + rawAxisX * sideVector.x);
-	camera.position.y += (rawAxisY * forVector.y + rawAxisX * sideVector.y);
+	camera.position.x += rawAxisX#(rawAxisY * forVector.x )+(rawAxisX * sideVector.x);
+	camera.position.y -= rawAxisY#(rawAxisY * forVector.y) + (rawAxisX * sideVector.y);
 	
 	
 	
