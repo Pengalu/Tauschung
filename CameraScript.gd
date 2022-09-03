@@ -35,9 +35,9 @@ func lendir_port(start,dir,mag):
 	
 func _process(delta):
 	if Input.is_action_pressed("rotateLeft"):
-		angle-=1
-	elif Input.is_action_pressed("rotateRight"):
 		angle+=1
+	elif Input.is_action_pressed("rotateRight"):
+		angle-=1
 
 	m00 = lendir_port(position,angle,1).x
 	m10 = lendir_port(position,angle,-1).y
