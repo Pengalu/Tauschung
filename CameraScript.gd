@@ -6,10 +6,13 @@ extends Node2D
 var camera = null
 var z = 50
 var angle = 0 #IN DEGREES
+var pitch = -0;
 var m00 = 0
 var m01 = 0
 var m10 = 0
 var m11 = 0
+var yscale = 0;
+var zscale = 0
 var size = Vector2()
 var uiLabel = null
 # Called when the node enters the scene tree for the first time.
@@ -35,15 +38,21 @@ func lendir_port(start,dir,mag):
 	
 func _process(delta):
 	if Input.is_action_pressed("rotateLeft"):
-		angle+=1
-	elif Input.is_action_pressed("rotateRight"):
 		angle-=1
-
+	elif Input.is_action_pressed("rotateRight"):
+		angle+=1
+	if Input.is_action_pressed("rotateUp"):
+		pitch-=1
+	elif Input.is_action_pressed("rotateDown"):
+		pitch+=1
 	m00 = lendir_port(position,angle,1).x
 	m10 = lendir_port(position,angle,-1).y
 	m01 = lendir_port(position,angle,1).y
 	m11 = lendir_port(position,angle,1).x
-		
+	var scaleVector = lendir_port(position,pitch,1)
+	yscale = scaleVector.y
+	zscale=scaleVector.x
+	#yscale = lendir_port()
 	
 	var rawAxisX = 0
 	var rawAxisY = 0
