@@ -3,7 +3,7 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var z = 0
+var z = -200
 var shadow = preload("res://Shadow.tscn")
 var shadowInstance=null
 var rng = RandomNumberGenerator.new()
@@ -11,6 +11,16 @@ var radius=0
 var drawPosition = null
 var drawPositionTable = null
 var originalPosition = null
+func getCurrentCamera2D():
+	var viewport = get_viewport()
+	if not viewport:
+		return null
+	var camerasGroupName = "__cameras_%d" % viewport.get_viewport_rid().get_id()
+	var cameras = get_tree().get_nodes_in_group(camerasGroupName)
+	for camera in cameras:
+		if camera is Camera2D and camera.current:
+			return camera
+	return null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize()
@@ -23,6 +33,7 @@ func _draw():
 		radius = rng.randf_range(25.0, 100.0)
 		$Sprite.modulate = Color(rng.randf(),rng.randf(),rng.randf())
 		originalPosition = position
+		#z = rng.randf_range(-500.0,500.0)
 	#print(position)
 	drawPositionTable = WorldToScreen.wp_to_sp(originalPosition,z)
 	drawPosition = drawPositionTable[0]
@@ -43,11 +54,15 @@ func _draw():
 #	shadowInstance.radius = radius
 #	shadowInstance.color = Color.dimgray
 	position = drawPosition
-	#print(position)
-	var realRadius = radius/32
-	$Sprite.scale=Vector2(realRadius,realRadius)
 	
-	shadowInstance.scale = Vector2(realRadius,realRadius)
+	#print(position)
+	var realRadius = (radius/32) #* drawPositionTable[2]
+	var cam = getCurrentCamera2D()
+	var cameraScript = CameraScript
+	#
+	$Sprite.scale=Vector2(realRadius,realRadius)
+	var realRadiusShadow=(radius/32)# * (shadowPositionTable[2])
+	shadowInstance.scale = Vector2(1*realRadiusShadow,realRadiusShadow*cameraScript.yscale)
 	z_index = position.y
 	shadowInstance.z_index = -4095#max is -4096
 	shadowInstance.position = Vector2(shadowPositionTable[0].x,shadowPositionTable[0].y+z)

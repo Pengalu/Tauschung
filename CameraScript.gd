@@ -4,7 +4,7 @@ extends Node2D
 
 #Custom freakin rotation system!
 var camera = null
-var z = 50
+var z = -50
 var angle = 0 #IN DEGREES
 var pitch = -0;
 var m00 = 0
@@ -15,6 +15,11 @@ var yscale = 0;
 var zscale = 0
 var size = Vector2()
 var uiLabel = null
+var near = 0
+var far = 100
+var fov = 1
+var zoom = 2
+var farnear_comp = 1 / (far - near);
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	camera = get_node("/root/Node2D/Camera2D")
@@ -38,9 +43,9 @@ func lendir_port(start,dir,mag):
 	
 func _process(delta):
 	if Input.is_action_pressed("rotateLeft"):
-		angle-=1
-	elif Input.is_action_pressed("rotateRight"):
 		angle+=1
+	elif Input.is_action_pressed("rotateRight"):
+		angle-=1
 	if Input.is_action_pressed("rotateUp"):
 		pitch-=1
 	elif Input.is_action_pressed("rotateDown"):

@@ -11,14 +11,27 @@ extends Node
 #Float of the relative Z position (depth)
 #Float "scale" of how big the object should be.
 
-
+func getCurrentCamera2D():
+	var viewport = get_viewport()
+	if not viewport:
+		return null
+	var camerasGroupName = "__cameras_%d" % viewport.get_viewport_rid().get_id()
+	var cameras = get_tree().get_nodes_in_group(camerasGroupName)
+	for camera in cameras:
+		if camera is Camera2D and camera.current:
+			return camera
+	return null
 func wp_to_sp(worldPos,depth):
 	#print(depth)
 	var camera = CameraScript
+	var sizeOfWindow = get_viewport().size
 	var res_screen_x = worldPos.x
 	var res_screen_y = worldPos.y
 	var res_screen_z = depth
-
+	var cameraObj = getCurrentCamera2D()
+	res_screen_x -= cameraObj.position.x - sizeOfWindow.x / 2
+	res_screen_y -= cameraObj.position.y - sizeOfWindow.y / 2
+	res_screen_z -= camera.z;
 	#res_screen_z -= camera.z;
 	#OLD, DEPRECATED CODE AHEAD!
 	#var res_screen_z = depth-camera.z
@@ -49,9 +62,20 @@ func wp_to_sp(worldPos,depth):
 	
 	
 	#res_screen_y-=depth
+	var res_screen_scale = (res_screen_z - camera.near) * camera.farnear_comp;
+	res_screen_scale += (1 - res_screen_scale) * camera.fov;
+
+	res_screen_scale = camera.zoom / res_screen_scale;
+	
+	
+	#res_screen_x *= res_screen_scale;
+	#res_screen_y *= res_screen_scale;
+	#get_viewport().get_rect().size
+	res_screen_x += sizeOfWindow.x / 2;
+	res_screen_y += sizeOfWindow.y / 2;
 	var finalVector2Pos = Vector2(res_screen_x,res_screen_y)
 	
-	return [finalVector2Pos, res_screen_z]#1 placeholder
+	return [finalVector2Pos, res_screen_z, res_screen_scale]#1 placeholder
 		
 
 	#note: come back to this after basic depth math is done lkolollolol
