@@ -4,13 +4,15 @@ extends Node2D
 
 #Custom freakin rotation system!
 var camera = null
-var z = -50
+var z = 50
 var angle = 0 #IN DEGREES
-var pitch = -0;
+var pitch = -20;
 var m00 = 0
 var m01 = 0
 var m10 = 0
 var m11 = 0
+var x;
+var y
 var yscale = 0;
 var zscale = 0
 var size = Vector2()
@@ -34,6 +36,8 @@ func lendir_port(start,dir,mag):
 	var radians = dir*(PI/180)
 	var directionVector = Vector2(cos(radians),sin(radians))
 	#print(directionVector)
+	#directionVector.x = abs(directionVector.x)
+	#directionVector.y = abs(directionVector.y)
 	directionVector *=mag
 	var result = directionVector
 	
@@ -43,9 +47,9 @@ func lendir_port(start,dir,mag):
 	
 func _process(delta):
 	if Input.is_action_pressed("rotateLeft"):
-		angle+=1
-	elif Input.is_action_pressed("rotateRight"):
 		angle-=1
+	elif Input.is_action_pressed("rotateRight"):
+		angle+=1
 	if Input.is_action_pressed("rotateUp"):
 		pitch-=1
 	elif Input.is_action_pressed("rotateDown"):
@@ -74,9 +78,10 @@ func _process(delta):
 	forVector.y = -forVector.y
 	var sideVector =  lendir_port(position,-angle,1)
 	sideVector.y = -sideVector.y
-	uiLabel.set_text(str(forVector) + " " +str(sideVector) +" "+str(angle))
-	camera.position.x += rawAxisX#(rawAxisY * forVector.x )+(rawAxisX * sideVector.x);
-	camera.position.y -= rawAxisY#(rawAxisY * forVector.y) + (rawAxisX * sideVector.y);
+	uiLabel.set_text(str(forVector) + " " +str(sideVector) +" "+str(angle)+str(camera.position))
+	
+	camera.position.x += rawAxisX*4#((rawAxisY * forVector.x )+(rawAxisX * sideVector.x))*4;#rawAxisX*4#((rawAxisY * forVector.x )+(rawAxisX * sideVector.x))*4;#rawAxisX*4#
+	camera.position.y -= rawAxisY*4#(((rawAxisY * forVector.y) + (rawAxisX * sideVector.y))*12);#rawAxisY*12#((rawAxisY * forVector.y) + (rawAxisX * sideVector.y))*4;#rawAxisY*4#
 	
 	
 	
