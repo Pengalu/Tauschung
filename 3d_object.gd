@@ -1,6 +1,7 @@
 extends Node2D
 
-var z = -200 #dont worry about it
+export var z = 20 #dont worry about it
+export var zIndexOffset = 0
 var shadow = preload("res://Shadow.tscn") #preload stuff
 var shadowInstance=null
 var rng = RandomNumberGenerator.new()
@@ -26,10 +27,10 @@ func _ready():
 
 	
 func _draw(): #called every time the screen is rendered
-	#if radius == 0: #If the ball doesn't exist or is too small to render noticeably
-		#radius = rng.randf_range(25.0, 100.0) #generate a ball large enough to render 
-	#	$Sprite.modulate = Color(rng.randf(),rng.randf(),rng.randf()) #random color generation
-	#	originalPosition = position #set the origin position of the ball
+	if radius == 0: #If the ball doesn't exist or is too small to render noticeably
+		radius = 100.0#rng.randf_range(25.0, 100.0) #generate a ball large enough to render 
+		#$Sprite.modulate = Color(rng.randf(),rng.randf(),rng.randf()) #random color generation
+		originalPosition = position #set the origin position of the ball
 		
 	
 	drawPositionTable = WorldToScreen.wp_to_sp(originalPosition,z) #convert ball coordinates to local axis
@@ -52,11 +53,12 @@ func _draw(): #called every time the screen is rendered
 	$Sprite.scale=Vector2(realRadius,realRadius)
 	var realRadiusShadow=(radius/32) #no way
 	shadowInstance.scale = Vector2(1*realRadiusShadow,realRadiusShadow*cameraScript.yscale) #flattens the shadows to provide illusion of depth or something like that
-	z_index = drawPositionTable[1] #set the draw order based on the distance from the camera on the z axis like in a 3d game
+	
+	z_index = drawPositionTable[1] +zIndexOffset #set the draw order based on the distance from the camera on the z axis like in a 3d game
 	shadowInstance.z_index = -4095#max is -4096, left some room for you :heart:
 	shadowInstance.position = Vector2(shadowPositionTable[0].x,shadowPositionTable[0].y)#+z) #this just puts the shadow in the right spot
-	
-	
+	shadowInstance.get_node("Sprite").texture = $Sprite.texture
+	shadowInstance.get_node("Sprite").scale = scale
 func _process(delta):
 	update()
 	

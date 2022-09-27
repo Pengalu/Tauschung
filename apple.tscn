@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Triangle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Ball.tscn" type="PackedScene" id=2]
+
+[node name="Apple" type="Node2D"]
+
+[node name="Ball" parent="." instance=ExtResource( 2 )]
+modulate = Color( 0.560784, 0.172549, 0.172549, 1 )
+position = Vector2( -2.5, 0 )
+scale = Vector2( 0.35, 0.375 )
+
+[node name="Ball2" parent="." instance=ExtResource( 2 )]
+modulate = Color( 0.560784, 0.172549, 0.172549, 1 )
+position = Vector2( 6, 0 )
+scale = Vector2( 0.35, 0.375 )
+
+[node name="Triangle" parent="." instance=ExtResource( 1 )]
+rotation = -2.66861
+scale = Vector2( 0.075, 0.15 )
+z = 35

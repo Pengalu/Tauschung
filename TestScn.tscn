@@ -1,9 +1,54 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://apple.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Ball.tscn" type="PackedScene" id=2]
 
 [node name="Node2D" type="Node2D"]
+rotation = 0.00240417
 __meta__ = {
 "_edit_horizontal_guides_": [ -64.0 ]
 }
+
+[node name="DownMarker" parent="." instance=ExtResource( 2 )]
+modulate = Color( 1, 0.913725, 0, 1 )
+position = Vector2( 0, 200 )
+rotation = -3.13612
+scale = Vector2( 0.75, 0.8 )
+z = 0
+
+[node name="LeftMarker" parent="." instance=ExtResource( 2 )]
+modulate = Color( 0, 0.27451, 1, 1 )
+position = Vector2( -200, 0 )
+rotation = -3.13612
+scale = Vector2( 0.75, 0.8 )
+z = 0
+
+[node name="LeftMarker2" parent="." instance=ExtResource( 2 )]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 200, 0 )
+rotation = -3.13612
+scale = Vector2( 0.75, 0.8 )
+z = 0
+
+[node name="DownMarker2" parent="." instance=ExtResource( 2 )]
+modulate = Color( 0.290196, 1, 0, 1 )
+position = Vector2( 0, -200 )
+rotation = -3.13612
+scale = Vector2( 0.75, 0.8 )
+z = 0
+
+[node name="WhiteMarker" parent="." instance=ExtResource( 2 )]
+visible = false
+rotation = -3.13612
+scale = Vector2( 0.75, 0.8 )
+z = 200
+
+[node name="WhiteMarker2" parent="." instance=ExtResource( 2 )]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+rotation = -3.13042
+scale = Vector2( 0.75, 0.8 )
+z = -200
 
 [node name="Camera2D" type="Camera2D" parent="."]
 rotating = true
@@ -18,3 +63,7 @@ margin_bottom = -7.0
 [node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/Control"]
 margin_right = 100.0
 margin_bottom = 60.0
+rect_rotation = -0.1189
+
+[node name="Apple" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3.0024, 0.992785 )

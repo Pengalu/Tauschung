@@ -6,7 +6,7 @@ extends Node2D
 var camera = null
 var z = 50
 var angle = 0 #IN DEGREES
-var pitch = -20;
+var pitch = 0;
 var m00 = 0
 var m01 = 0
 var m10 = 0

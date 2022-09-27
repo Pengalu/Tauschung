@@ -78,7 +78,7 @@ func wp_to_sp(worldPos,depth):
 	return [finalVector2Pos, res_screen_z, res_screen_scale]#1 placeholder
 		
 
-	#note: come back to this after basic depth math is done lkolollolol
+	
 	
 
 # Called when the node enters the scene tree for the first time.
