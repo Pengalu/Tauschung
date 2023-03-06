@@ -15,11 +15,11 @@
 #	t.set_one_shot(true)
 #	self.add_child(t)
 #	t.start()
-#	yield(t, "timeout")
+#	await t.timeout
 #	t.queue_free()
 #	for n in 100:
 #		rng.randomize()
-#		var instance = ball.instance()
+#		var instance = ball.instantiate()
 #
 #		instance.position=Vector2(rng.randf_range(-1200,1200),rng.randf_range(-600,600))
 #		add_child(instance)
