@@ -17,8 +17,8 @@ var yscale = 0;
 var zscale = 0
 var size = Vector2()
 var uiLabel = null
-var near = 0
-var far = 100
+var near = 0.0
+var far = 100.0
 var fov = 1
 var zoom = 2
 var farnear_comp = 1 / (far - near);
@@ -27,7 +27,7 @@ func _ready():
 	camera = get_node("/root/Node2D/Camera2D")
 	uiLabel = get_node("/root/Node2D/Camera2D/Control/RichTextLabel")
 	print(lendir_port(Vector2(500,500),45,1))
-	 # Replace with function body.
+	# Replace with function body.
 func _draw():
 	size= get_viewport().get_size()
 	

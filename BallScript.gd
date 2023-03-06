@@ -58,6 +58,6 @@ func _draw(): #called every time the screen is rendered
 	
 	
 func _process(delta):
-	update()
+	queue_redraw()
 	
 

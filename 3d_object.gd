@@ -16,7 +16,7 @@ func getCurrentCamera2D(): #Returns whatever camera is being used right now sinc
 	var camerasGroupName = "__cameras_%d" % viewport.get_viewport_rid().get_id()
 	var cameras = get_tree().get_nodes_in_group(camerasGroupName)
 	for camera in cameras:
-		if camera is Camera2D and camera.current:
+		if camera is Camera2D and camera.is_current():
 			return camera
 	return null
 # Called when the node enters the scene tree for the first time.
@@ -60,6 +60,6 @@ func _draw(): #called every time the screen is rendered
 	shadowInstance.get_node("Sprite2D").texture = $Sprite2D.texture
 	shadowInstance.get_node("Sprite2D").scale = scale
 func _process(delta):
-	update()
+	queue_redraw()
 	
 
