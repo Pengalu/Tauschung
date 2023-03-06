@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ckjjqor4vsxma"]
 
-[ext_resource type="PackedScene" path="res://apple.tscn" id="1"]
-[ext_resource type="PackedScene" path="res://Ball.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://nulmlv1mo6tf" path="res://Ball.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://ivdj02il1dak" path="res://house.tscn" id="4_x5fpp"]
 
 [node name="Node2D" type="Node2D"]
 rotation = 0.00240417
@@ -63,5 +63,5 @@ offset_right = 100.0
 offset_bottom = 60.0
 rotation = -0.1189
 
-[node name="Apple" parent="." instance=ExtResource("1")]
-position = Vector2(3.0024, 0.992785)
+[node name="house" parent="." instance=ExtResource("4_x5fpp")]
+position = Vector2(-7.85573, 60.0191)
