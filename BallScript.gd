@@ -28,7 +28,7 @@ func _ready():
 func _draw(): #called every time the screen is rendered
 	#if radius == 0: #If the ball doesn't exist or is too small to render noticeably
 		#radius = rng.randf_range(25.0, 100.0) #generate a ball large enough to render 
-	#	$Sprite.modulate = Color(rng.randf(),rng.randf(),rng.randf()) #random color generation
+	#	$Sprite2D.modulate = Color(rng.randf(),rng.randf(),rng.randf()) #random color generation
 	#	originalPosition = position #set the origin position of the ball
 		
 	
@@ -38,7 +38,7 @@ func _draw(): #called every time the screen is rendered
 	
 	var shadowPositionTable = WorldToScreen.wp_to_sp(originalPosition,0)#draw the shadows at 0 depth (*ground)
 	if shadowInstance == null: #generate shadow
-		shadowInstance = shadow.instance()
+		shadowInstance = shadow.instantiate()
 		get_node("/root/Node2D/").add_child(shadowInstance)
 	
 	
@@ -49,7 +49,7 @@ func _draw(): #called every time the screen is rendered
 	var cam = getCurrentCamera2D() #see getCurrentCamera2D
 	var cameraScript = CameraScript#memory leak moment
 	
-	$Sprite.scale=Vector2(realRadius,realRadius)
+	$Sprite2D.scale=Vector2(realRadius,realRadius)
 	var realRadiusShadow=(radius/32) #no way
 	shadowInstance.scale = Vector2(1*realRadiusShadow,realRadiusShadow*cameraScript.yscale) #flattens the shadows to provide illusion of depth or something like that
 	z_index = drawPositionTable[1] #set the draw order based on the distance from the camera on the z axis like in a 3d game
