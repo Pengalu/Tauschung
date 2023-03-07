@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm73ecemqrwjr"]
+
+[ext_resource type="Script" path="res://3d_object.gd" id="1_h75po"]
+[ext_resource type="Script" path="res://line.gd" id="1_qndpe"]
+
+[node name="line" type="Node2D"]
+script = ExtResource("1_qndpe")
+
+[node name="point0" type="Node2D" parent="."]
+position = Vector2(20, 0)
+script = ExtResource("1_h75po")
+z = 0
+
+[node name="point1" type="Node2D" parent="."]
+script = ExtResource("1_h75po")

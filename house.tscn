@@ -1,0 +1,161 @@
+[gd_scene load_steps=6 format=3 uid="uid://ivdj02il1dak"]
+
+[ext_resource type="PackedScene" uid="uid://dm73ecemqrwjr" path="res://line.tscn" id="1_buplq"]
+[ext_resource type="Script" path="res://house.gd" id="1_cdl6m"]
+[ext_resource type="Script" path="res://3d_object.gd" id="2_ntys2"]
+[ext_resource type="PackedScene" uid="uid://iyj7s7cvokrw" path="res://rectangle.tscn" id="4_0fx4o"]
+[ext_resource type="PackedScene" uid="uid://ct4lg6dduthjg" path="res://triangle_primitive.tscn" id="4_gwt2f"]
+
+[node name="house" type="Node2D"]
+script = ExtResource("1_cdl6m")
+
+[node name="line" parent="." instance=ExtResource("1_buplq")]
+position = Vector2(14, -56)
+point0 = Vector3(40, 40, 0)
+point1 = Vector3(40, 40, 100)
+color = Color(0.203922, 0.215686, 0.278431, 1)
+zIndexModifier = 20
+
+[node name="line2" parent="." instance=ExtResource("1_buplq")]
+position = Vector2(-1, -22)
+point0 = Vector3(-40, 40, 0)
+point1 = Vector3(-40, 40, 100)
+color = Color(0.203922, 0.215686, 0.278431, 1)
+zIndexModifier = 20
+
+[node name="line3" parent="." instance=ExtResource("1_buplq")]
+position = Vector2(63, 2)
+point0 = Vector3(-40, -40, 0)
+point1 = Vector3(-40, -40, 100)
+color = Color(0.203922, 0.215686, 0.278431, 1)
+zIndexModifier = 20
+
+[node name="line4" parent="." instance=ExtResource("1_buplq")]
+position = Vector2(26, -5)
+point0 = Vector3(40, -40, 0)
+point1 = Vector3(40, -40, 100)
+color = Color(0.203922, 0.215686, 0.278431, 1)
+zIndexModifier = 20
+
+[node name="cross" type="Node2D" parent="."]
+
+[node name="crossLine" parent="cross" instance=ExtResource("1_buplq")]
+position = Vector2(52, -10)
+point0 = Vector3(40, 40, 100)
+point1 = Vector3(-40, 40, 0)
+color = Color(0.301961, 0.231373, 0.141176, 1)
+zIndexModifier = 40
+
+[node name="crossLine2" parent="cross" instance=ExtResource("1_buplq")]
+position = Vector2(-1, -22)
+point0 = Vector3(-40, -40, 100)
+point1 = Vector3(40, -40, 0)
+color = Color(0.301961, 0.231373, 0.141176, 1)
+zIndexModifier = 40
+
+[node name="crossLine3" parent="cross" instance=ExtResource("1_buplq")]
+position = Vector2(51, -32)
+point0 = Vector3(40, -40, 0)
+point1 = Vector3(40, 40, 100)
+color = Color(0.301961, 0.231373, 0.141176, 1)
+zIndexModifier = 40
+
+[node name="crossLine4" parent="cross" instance=ExtResource("1_buplq")]
+position = Vector2(-2, -44)
+point0 = Vector3(-40, 40, 0)
+point1 = Vector3(-40, -40, 100)
+color = Color(0.301961, 0.231373, 0.141176, 1)
+zIndexModifier = 40
+
+[node name="roof" type="Node2D" parent="."]
+
+[node name="roofTip" type="Node2D" parent="roof"]
+position = Vector2(20, 20)
+script = ExtResource("2_ntys2")
+
+[node name="roofLine" parent="roof" instance=ExtResource("1_buplq")]
+position = Vector2(52, -10)
+point0 = Vector3(41, 41, 100)
+point1 = Vector3(-1, -1, 130)
+color = Color(0.301961, 0.231373, 0.141176, 1)
+zIndexModifier = 60
+
+[node name="roofLine2" parent="roof" instance=ExtResource("1_buplq")]
+position = Vector2(-1, -22)
+point0 = Vector3(-41, 41, 100)
+point1 = Vector3(1, -1, 130)
+color = Color(0.301961, 0.231373, 0.141176, 1)
+zIndexModifier = 60
+
+[node name="roofLine3" parent="roof" instance=ExtResource("1_buplq")]
+position = Vector2(51, -32)
+point0 = Vector3(41, -41, 100)
+point1 = Vector3(-1, 1, 130)
+color = Color(0.301961, 0.231373, 0.141176, 1)
+zIndexModifier = 60
+
+[node name="roofLine4" parent="roof" instance=ExtResource("1_buplq")]
+position = Vector2(-2, -44)
+point0 = Vector3(-41, -41, 100)
+point1 = Vector3(1, 1, 130)
+color = Color(0.301961, 0.231373, 0.141176, 1)
+zIndexModifier = 60
+
+[node name="triangle_primitive" parent="roof" instance=ExtResource("4_gwt2f")]
+point0 = Vector3(41, 41, 100)
+point1 = Vector3(-41, 41, 100)
+point2 = Vector3(0, 0, 130)
+zIndexModifier = 20
+color = Color(0.47451, 0.372549, 0.243137, 1)
+
+[node name="triangle_primitive2" parent="roof" instance=ExtResource("4_gwt2f")]
+point0 = Vector3(-41, 41, 100)
+point1 = Vector3(-41, -41, 100)
+point2 = Vector3(0, 0, 130)
+zIndexModifier = 20
+color = Color(0.47451, 0.372549, 0.243137, 1)
+
+[node name="triangle_primitive3" parent="roof" instance=ExtResource("4_gwt2f")]
+point0 = Vector3(41, -41, 100)
+point1 = Vector3(-41, -41, 100)
+point2 = Vector3(0, 0, 130)
+zIndexModifier = 20
+color = Color(0.47451, 0.372549, 0.243137, 1)
+
+[node name="triangle_primitive4" parent="roof" instance=ExtResource("4_gwt2f")]
+scale = Vector2(0.997853, 0.996182)
+point0 = Vector3(41, -41, 100)
+point1 = Vector3(41, 41, 100)
+point2 = Vector3(0, 0, 130)
+zIndexModifier = 20
+color = Color(0.47451, 0.372549, 0.243137, 1)
+
+[node name="walls" type="Node2D" parent="."]
+
+[node name="rectangle" parent="walls" instance=ExtResource("4_0fx4o")]
+point0 = Vector3(-40, -38, 0)
+point1 = Vector3(40, -38, 0)
+point2 = Vector3(40, -38, 100)
+point3 = Vector3(-40, -38, 100)
+color = Color(0.309804, 0.32549, 0.407843, 1)
+
+[node name="rectangle2" parent="walls" instance=ExtResource("4_0fx4o")]
+point0 = Vector3(-40, 38, 0)
+point1 = Vector3(40, 38, 0)
+point2 = Vector3(40, 38, 100)
+point3 = Vector3(-40, 38, 100)
+color = Color(0.309804, 0.32549, 0.407843, 1)
+
+[node name="rectangle3" parent="walls" instance=ExtResource("4_0fx4o")]
+point0 = Vector3(38, -40, 0)
+point1 = Vector3(38, 40, 0)
+point2 = Vector3(38, 40, 100)
+point3 = Vector3(38, -40, 100)
+color = Color(0.309804, 0.32549, 0.407843, 1)
+
+[node name="rectangle4" parent="walls" instance=ExtResource("4_0fx4o")]
+point0 = Vector3(-38, -40, 0)
+point1 = Vector3(-38, 40, 0)
+point2 = Vector3(-38, 40, 100)
+point3 = Vector3(-38, -40, 100)
+color = Color(0.309804, 0.32549, 0.407843, 1)

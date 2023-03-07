@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct4lg6dduthjg"]
+
+[ext_resource type="Script" path="res://triangle_primitive.gd" id="1_2mjvg"]
+[ext_resource type="Script" path="res://3d_object.gd" id="2_hv4g5"]
+
+[node name="triangle_primitive" type="Node2D"]
+script = ExtResource("1_2mjvg")
+
+[node name="point0" type="Node2D" parent="."]
+position = Vector2(20, 0)
+script = ExtResource("2_hv4g5")
+z = 0
+
+[node name="point1" type="Node2D" parent="."]
+script = ExtResource("2_hv4g5")
+
+[node name="point2" type="Node2D" parent="."]
+script = ExtResource("2_hv4g5")

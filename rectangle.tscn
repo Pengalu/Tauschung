@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://iyj7s7cvokrw"]
+
+[ext_resource type="Script" path="res://rectangle.gd" id="1_6j7j4"]
+[ext_resource type="Script" path="res://3d_object.gd" id="2_565by"]
+
+[node name="rectangle" type="Node2D"]
+script = ExtResource("1_6j7j4")
+
+[node name="point0" type="Node2D" parent="."]
+position = Vector2(20, 0)
+script = ExtResource("2_565by")
+z = 0
+
+[node name="point1" type="Node2D" parent="."]
+script = ExtResource("2_565by")
+
+[node name="point2" type="Node2D" parent="."]
+script = ExtResource("2_565by")
+
+[node name="point3" type="Node2D" parent="."]
+script = ExtResource("2_565by")
