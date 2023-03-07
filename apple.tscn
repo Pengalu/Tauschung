@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cu3wi6shec4fx"]
 
-[ext_resource type="PackedScene" path="res://Triangle.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bxyqgnqlqmrko" path="res://Triangle.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://nulmlv1mo6tf" path="res://Ball.tscn" id="2"]
 
 [node name="Apple" type="Node2D"]

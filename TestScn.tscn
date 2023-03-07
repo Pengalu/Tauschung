@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckjjqor4vsxma"]
+[gd_scene load_steps=4 format=3 uid="uid://ckjjqor4vsxma"]
 
 [ext_resource type="PackedScene" uid="uid://nulmlv1mo6tf" path="res://Ball.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://iyj7s7cvokrw" path="res://rectangle.tscn" id="3_al3py"]
 [ext_resource type="PackedScene" uid="uid://ivdj02il1dak" path="res://house.tscn" id="4_x5fpp"]
 
 [node name="Node2D" type="Node2D"]
@@ -65,3 +66,10 @@ rotation = -0.1189
 
 [node name="house" parent="." instance=ExtResource("4_x5fpp")]
 position = Vector2(-7.85573, 60.0191)
+
+[node name="rectangle" parent="." instance=ExtResource("3_al3py")]
+z_index = -4096
+position = Vector2(-158.766, 97.382)
+point0 = Vector3(10, 10, 0)
+point1 = Vector3(0, 10, 0)
+point3 = Vector3(10, 0, 0)

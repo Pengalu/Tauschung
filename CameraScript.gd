@@ -4,7 +4,7 @@ extends Node2D
 
 #Custom freakin rotation system!
 var camera = null
-var z = 50
+var z = 100
 var angle = 0 #IN DEGREES
 var pitch = 0;
 var m00 = 0
@@ -19,7 +19,7 @@ var size = Vector2()
 var uiLabel = null
 var near = 0.0
 var far = 100.0
-var fov = 1
+var fov = 2
 var zoom = 2
 var farnear_comp = 1 / (far - near);
 # Called when the node enters the scene tree for the first time.

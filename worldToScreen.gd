@@ -32,6 +32,7 @@ func wp_to_sp(worldPos,depth):
 	#res_screen_x -= cameraObj.position.x - sizeOfWindow.x / 2
 	#res_screen_y -= cameraObj.position.y - sizeOfWindow.y / 2
 	res_screen_z -= camera.z;
+	
 	#res_screen_z -= camera.z;
 	#OLD, DEPRECATED CODE AHEAD!
 	#var res_screen_z = depth-camera.z
